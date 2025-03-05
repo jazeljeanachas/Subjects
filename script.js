@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("https://jazeljeanachas.github.io/Subjects/course.json")
         .then(response => response.json())
         .then(data => {
-            console.log("Fetched Data:", data); 
+            console.log("Fetched Data:", data); // Debugging - Check JSON structure
+            displaySubjects(data); // Display all subjects initially
+            window.allCourses = data; // Store data for searching
         })
         .catch(error => console.error("Error fetching JSON:", error));
 });
@@ -32,8 +34,8 @@ function displaySubjects(data) {
     data.forEach(course => {
         let yearSemesterRow = document.createElement("tr");
         let yearSemesterCell = document.createElement("td");
-        yearSemesterCell.textContent = `${course.year} - ${course.semester}`;
-        yearSemesterCell.colSpan = 3;
+        yearSemesterCell.textContent = `${course.year || "Unknown Year"} - ${course.semester || "Unknown Semester"}`;
+        yearSemesterCell.colSpan = 3; // Span across all columns
         yearSemesterCell.style.fontWeight = "bold";
         yearSemesterCell.style.textAlign = "center";
         coursesTable.appendChild(yearSemesterRow);
@@ -57,19 +59,15 @@ function displaySubjects(data) {
 
 function searchSubjects() {
     let input = document.getElementById("searchInput").value.toLowerCase();
+    
+    let filteredData = window.allCourses.map(course => ({
+        year: course.year || "Unknown Year",
+        semester: course.semester || "Unknown Semester",
+        subjects: course.subjects.filter(subject =>
+            subject.toLowerCase().includes(input) || 
+            (subjectDescriptions[subject] && subjectDescriptions[subject].toLowerCase().includes(input))
+        )
+    })).filter(course => course.subjects.length > 0);
 
-    fetch("https://jazeljeanachas.github.io/Subjects/course.json")
-        .then(response => response.json())
-        .then(data => {
-            let filteredData = data.map(course => ({
-                year: course.year || "Unknown Year",
-                semester: course.semester || "Unknown Semester",
-                subjects: course.subjects.filter(subject =>
-                    subject.toLowerCase().includes(input) || 
-                    (subjectDescriptions[subject] && subjectDescriptions[subject].toLowerCase().includes(input))
-                )
-            })).filter(course => course.subjects.length > 0);
-
-            displaySubjects(filteredData);
-        });
+    displaySubjects(filteredData);
 }
