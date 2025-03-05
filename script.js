@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             console.log("Fetched Data:", data); 
-            displaySubjects(data);
         })
         .catch(error => console.error("Error fetching JSON:", error));
 });
@@ -37,8 +36,8 @@ function displaySubjects(data) {
         yearSemesterCell.colSpan = 3;
         yearSemesterCell.style.fontWeight = "bold";
         yearSemesterCell.style.textAlign = "center";
-        yearSemesterRow.appendChild(yearSemesterCell);
         coursesTable.appendChild(yearSemesterRow);
+        yearSemesterRow.appendChild(yearSemesterCell);
 
         course.subjects.forEach(subject => {
             let row = document.createElement("tr");
@@ -66,7 +65,8 @@ function searchSubjects() {
                 year: course.year || "Unknown Year",
                 semester: course.semester || "Unknown Semester",
                 subjects: course.subjects.filter(subject =>
-                    subject.toLowerCase().includes(input)
+                    subject.toLowerCase().includes(input) || 
+                    (subjectDescriptions[subject] && subjectDescriptions[subject].toLowerCase().includes(input))
                 )
             })).filter(course => course.subjects.length > 0);
 
