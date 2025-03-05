@@ -7,11 +7,44 @@
     <style>
         body { font-family: Arial, sans-serif; }
         .course-container { margin: 20px; padding: 10px; border: 1px solid #ccc; }
+        #searchInput { 
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
     <h1>Subjects Taken</h1>
-    <div id="courses"></div>
+    <input type="text" id="searchInput" placeholder="Search for a subject..." onkeyup="searchSubjects()">
+    
+    <div class="course-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody id="courses"></tbody>
+        </table>
+    </div>
 
     <script src="script.js"></script>
 </body>
