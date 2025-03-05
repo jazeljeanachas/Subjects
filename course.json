@@ -2,7 +2,14 @@
     {
         "year": "1st Year",
         "semester": "1st Semester",
-        "subjects": ["Mathematics 1", "Physics 1", "Programming 1", "English 1"]
+        "subjects": ["Introduction to Computing",
+        "Computer Programming 1", 
+        "Purposive Communication", 
+        "Readings in Philippine History", 
+        "The Contemporary World", 
+        "Mathematics in the Modern World", 
+        "PATHFIT", 
+        "CWTS 1"]
     },
     {
         "year": "1st Year",
