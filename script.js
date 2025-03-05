@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             console.log("Fetched Data:", data);
             displaySubjects(data);
-            window.allCourses = data; 
+            window.allCourses = data;
         })
         .catch(error => console.error("Error fetching JSON:", error));
 });
@@ -24,6 +24,7 @@ const subjectDescriptions = {
     "ArtApp": "Art Appreciation",
     "UTS": "Understanding the Self",
     "STS": "Science, Technology and Society",
+    "PATHFit": "Exercise-based Fitness Activities",
     "CWTS 2": "Civic Welfare Training Service",
     "IT211": "Intro to Human Computer Interaction",
     "IT212": "Fundamentals of Database Systems",
@@ -38,7 +39,7 @@ const subjectDescriptions = {
     "Etch": "Ethics",
     "Rizal": "Life and Works of Rizal",
     "PATHFit": "Physical Activity Towards Health and Fitness 4",
-     "IT311": "Information Assurance and Security",
+    "IT311": "Information Assurance and Security",
     "IT312": "Networking 2",
     "IT313": "Mobile Programming",
     "IT314": "Software Engineering",
@@ -60,7 +61,7 @@ function displaySubjects(data) {
         let yearSemesterRow = document.createElement("tr");
         let yearSemesterCell = document.createElement("td");
         yearSemesterCell.textContent = `${course.year || "Unknown Year"} - ${course.semester || "Unknown Semester"}`;
-        yearSemesterCell.colSpan = 3;
+        yearSemesterCell.colSpan = 3; 
         yearSemesterCell.style.fontWeight = "bold";
         yearSemesterCell.style.textAlign = "center";
         yearSemesterRow.appendChild(yearSemesterCell);
@@ -96,4 +97,3 @@ function searchSubjects() {
 
     displaySubjects(filteredData);
 }
-
