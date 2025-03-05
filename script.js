@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             console.log("Fetched Data:", data); // Debugging - Check JSON structure
-            displaySubjects(data); // Display all subjects initially
-            window.allCourses = data; // Store data for searching
+            displaySubjects(data);
+            window.allCourses = data; // Store the full course list for searching
         })
         .catch(error => console.error("Error fetching JSON:", error));
 });
@@ -38,8 +38,8 @@ function displaySubjects(data) {
         yearSemesterCell.colSpan = 3; // Span across all columns
         yearSemesterCell.style.fontWeight = "bold";
         yearSemesterCell.style.textAlign = "center";
-        coursesTable.appendChild(yearSemesterRow);
         yearSemesterRow.appendChild(yearSemesterCell);
+        coursesTable.appendChild(yearSemesterRow);
 
         course.subjects.forEach(subject => {
             let row = document.createElement("tr");
@@ -59,7 +59,7 @@ function displaySubjects(data) {
 
 function searchSubjects() {
     let input = document.getElementById("searchInput").value.toLowerCase();
-    
+
     let filteredData = window.allCourses.map(course => ({
         year: course.year || "Unknown Year",
         semester: course.semester || "Unknown Semester",
@@ -71,3 +71,4 @@ function searchSubjects() {
 
     displaySubjects(filteredData);
 }
+
