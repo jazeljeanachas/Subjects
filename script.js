@@ -6,7 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
             displaySubjects(data);
             window.allCourses = data;
         })
-        .catch(error => console.error("Error fetching JSON:", error));
+        .catch(function(error) {console.error("Error fetching JSON:", error);
+
 });
 
 const subjectDescriptions = {
