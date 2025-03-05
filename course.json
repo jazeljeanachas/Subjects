@@ -1,19 +1,12 @@
 [
     {
-        "subjects": ["IT111",
-        "IT112", 
-        "PurCom", 
-        "RPH", 
-        "TCW", 
-        "MMW", 
-        "PATHFit", 
-        "CWTS 1"]
+        "year": "1st Year",
+        "semester": "1st Semester",
+        "subjects": ["IT111", "IT112", "PurCom", "RPH", "TCW", "MMW", "PATHFit", "CWTS 1"]
     },
     {
-        
-        "subjects": ["IT121", "Physics 2", "Programming 2", "English 2"]
-    },
-    {
-        "subjects": ["Data Structures", "Database Systems", "Operating Systems"]
+        "year": "1st Year",
+        "semester": "2nd Semester",
+        "subjects": ["IT121", "IT122", "IT123", "ArtApp", "UTS", "STS", "PATHFit", "CWTS 2"]
     }
 ]
