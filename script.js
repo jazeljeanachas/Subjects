@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("https://jazeljeanachas.github.io/Subjects/course.json")
         .then(response => response.json())
         .then(data => {
-            console.log("Fetched Data:", data); // Debugging - Check JSON structure
+            console.log("Fetched Data:", data); 
             displaySubjects(data);
         })
         .catch(error => console.error("Error fetching JSON:", error));
@@ -31,19 +31,17 @@ function displaySubjects(data) {
     coursesTable.innerHTML = ""; 
 
     data.forEach(course => {
-        let year = course.year || "Unknown Year";
-        let semester = course.semester || "Unknown Semester";
+        let yearSemesterRow = document.createElement("tr");
+        let yearSemesterCell = document.createElement("td");
+        yearSemesterCell.textContent = `${course.year} - ${course.semester}`;
+        yearSemesterCell.colSpan = 3;
+        yearSemesterCell.style.fontWeight = "bold";
+        yearSemesterCell.style.textAlign = "center";
+        yearSemesterRow.appendChild(yearSemesterCell);
+        coursesTable.appendChild(yearSemesterRow);
 
         course.subjects.forEach(subject => {
             let row = document.createElement("tr");
-
-            let yearCell = document.createElement("td");
-            yearCell.textContent = year;
-            row.appendChild(yearCell);
-
-            let semesterCell = document.createElement("td");
-            semesterCell.textContent = semester;
-            row.appendChild(semesterCell);
 
             let subjectCell = document.createElement("td");
             subjectCell.textContent = subject;
@@ -75,4 +73,3 @@ function searchSubjects() {
             displaySubjects(filteredData);
         });
 }
-
