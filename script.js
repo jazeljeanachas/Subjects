@@ -1,32 +1,50 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     fetch("https://jazeljeanachas.github.io/Subjects/course.json")
         .then(response => response.json())
         .then(data => {
+            console.log("Fetched Data:", data); 
             displaySubjects(data);
         })
         .catch(error => console.error("Error fetching JSON:", error));
 });
 
+
+const subjectDescriptions = {
+    "IT111": "Introduction to Computing",
+    "IT112": "Computer Programming 1",
+    "PurCom": "Purposive Communication",
+    "RPH": "Readings in Philippine History",
+    "TCW": "The Contemporary World",
+    "MMW": "Mathematics in the Modern World",
+    "PATHFit": "Movement Competency Training",
+    "CWTS 1": "Civic Welfare Training Service",
+    "IT121": "Computer Programming 2",
+    "Physics 2": "College Physics",
+    "Programming 2": "Intermediate Programming",
+    "English 2": "Academic Writing",
+    "Data Structures": "Fundamentals of Data Structures",
+    "Database Systems": "Introduction to Database Management",
+    "Operating Systems": "Operating System Concepts"
+};
+
 function displaySubjects(data) {
-    let coursesDiv = document.getElementById("courses");
-    coursesDiv.innerHTML = ""; 
+    let coursesTable = document.getElementById("courses");
+    coursesTable.innerHTML = ""; 
+
     data.forEach(course => {
-        let courseContainer = document.createElement("div");
-        courseContainer.classList.add("course-container");
-
-        let title = document.createElement("h2");
-        title.textContent = `${course.year} - ${course.semester}`;
-        courseContainer.appendChild(title);
-
-        let ul = document.createElement("ul");
         course.subjects.forEach(subject => {
-            let li = document.createElement("li");
-            li.textContent = subject;
-            ul.appendChild(li);
-        });
+            let row = document.createElement("tr");
 
-        courseContainer.appendChild(ul);
-        coursesDiv.appendChild(courseContainer);
+            let subjectCell = document.createElement("td");
+            subjectCell.textContent = subject;
+            row.appendChild(subjectCell);
+
+            let descCell = document.createElement("td");
+            descCell.textContent = subjectDescriptions[subject] || "No description available";
+            row.appendChild(descCell);
+
+            coursesTable.appendChild(row);
+        });
     });
 }
 
@@ -37,9 +55,7 @@ function searchSubjects() {
         .then(response => response.json())
         .then(data => {
             let filteredData = data.map(course => ({
-                year: course.year,
-                semester: course.semester,
-                subjects: course.subjects.filter(subject => 
+                subjects: course.subjects.filter(subject =>
                     subject.toLowerCase().includes(input)
                 )
             })).filter(course => course.subjects.length > 0);
