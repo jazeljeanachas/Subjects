@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subjects Taken</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        .course-container { margin: 20px; padding: 10px; border: 1px solid #ccc; }
-        #searchInput { 
-            width: 100%;
+        body {
+            font-family: "Times New Roman", serif;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #searchInput {
+            width: 50%;
             padding: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
         }
         table {
-            width: 100%;
+            width: 60%;
             border-collapse: collapse;
             margin-top: 10px;
         }
@@ -32,9 +41,8 @@
 </head>
 <body>
     <h1>Subjects Taken</h1>
-    <input type="text" id="searchInput" placeholder="Search for a subject..." onkeyup="searchSubjects()">
-    
-    <div class="course-container">
+    <div class="container">
+        <input type="text" id="searchInput" placeholder="Search for a subject" onkeyup="searchSubjects()">
         <table>
             <thead>
                 <tr>
@@ -45,7 +53,6 @@
             <tbody id="courses"></tbody>
         </table>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
