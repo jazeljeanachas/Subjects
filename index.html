@@ -4,7 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subjects Taken</title>
-    <style>
+</head>
+<body>
+    <h1>Subjects Taken</h1>
+    <div class="container">
+        <input type="text" id="searchInput" placeholder="Search for a subject" onkeyup="searchSubjects()">
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody id="courses"></tbody>
+        </table>
+    </div>
+     <style>
         body {
             font-family: "Times New Roman", serif;
             text-align: center;
@@ -30,29 +45,14 @@
             margin-top: 10px;
         }
         th, td {
-            border: 1px solid #ddd;
+            border: 1px solid #402a23;
             padding: 8px;
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #faf5e4;
         }
     </style>
-</head>
-<body>
-    <h1>Subjects Taken</h1>
-    <div class="container">
-        <input type="text" id="searchInput" placeholder="Search for a subject" onkeyup="searchSubjects()">
-        <table>
-            <thead>
-                <tr>
-                    <th>Subject</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody id="courses"></tbody>
-        </table>
-    </div>
     <script src="script.js"></script>
 </body>
 </html>
