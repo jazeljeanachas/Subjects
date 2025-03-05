@@ -1,13 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("https://jazeljeanachas.github.io/Subjects/course.json")
-        .then(response => response.json())
-        .then(data => {
-            console.log("Fetched Data:", data);
-            displaySubjects(data);
-            window.allCourses = data;
-        })
-        .catch(function(error) {console.error("Error fetching JSON:", error);
-
+fetch("https://jazeljeanachas.github.io/Subjects/course.json")
+    .then(response => {
+        console.log("Response Status:", response.status);
+        return response.json();
+    })
+    .then(data => {
+        console.log("Fetched Data:", data);
+    })
+    .catch(error => console.error("Error fetching JSON:", error));
 });
 
 const subjectDescriptions = {
