@@ -2,12 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("https://jazeljeanachas.github.io/Subjects/course.json")
         .then(response => response.json())
         .then(data => {
-            console.log("Fetched Data:", data); 
+            console.log("Fetched Data:", data); // Debugging - Check JSON structure
             displaySubjects(data);
         })
         .catch(error => console.error("Error fetching JSON:", error));
 });
-
 
 const subjectDescriptions = {
     "IT111": "Introduction to Computing",
@@ -18,13 +17,13 @@ const subjectDescriptions = {
     "MMW": "Mathematics in the Modern World",
     "PATHFit": "Movement Competency Training",
     "CWTS 1": "Civic Welfare Training Service",
-    "IT121": "Computer Programming 2",
-    "Physics 2": "College Physics",
-    "Programming 2": "Intermediate Programming",
-    "English 2": "Academic Writing",
-    "Data Structures": "Fundamentals of Data Structures",
-    "Database Systems": "Introduction to Database Management",
-    "Operating Systems": "Operating System Concepts"
+    "IT121": "Computer Programming",
+    "IT122": "Data Structures and Algorithms",
+    "IT123": "Discrete Mathematics",
+    "ArtApp": "Art Appreciation",
+    "UTS": "Understanding the Self",
+    "STS": "Science, Technology and Society",
+    "CWTS 2": "Civic Welfare Training Service"
 };
 
 function displaySubjects(data) {
@@ -32,8 +31,19 @@ function displaySubjects(data) {
     coursesTable.innerHTML = ""; 
 
     data.forEach(course => {
+        let year = course.year || "Unknown Year";
+        let semester = course.semester || "Unknown Semester";
+
         course.subjects.forEach(subject => {
             let row = document.createElement("tr");
+
+            let yearCell = document.createElement("td");
+            yearCell.textContent = year;
+            row.appendChild(yearCell);
+
+            let semesterCell = document.createElement("td");
+            semesterCell.textContent = semester;
+            row.appendChild(semesterCell);
 
             let subjectCell = document.createElement("td");
             subjectCell.textContent = subject;
@@ -55,6 +65,8 @@ function searchSubjects() {
         .then(response => response.json())
         .then(data => {
             let filteredData = data.map(course => ({
+                year: course.year || "Unknown Year",
+                semester: course.semester || "Unknown Semester",
                 subjects: course.subjects.filter(subject =>
                     subject.toLowerCase().includes(input)
                 )
@@ -63,3 +75,4 @@ function searchSubjects() {
             displaySubjects(filteredData);
         });
 }
+
