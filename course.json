@@ -8,22 +8,22 @@
         "year": "1st Year",
         "semester": "2nd Semester",
         "subjects": ["IT121", "IT122", "IT123", "ArtApp", "UTS", "STS", "PATHFit", "CWTS 2"]
-    }
-     {
+    },
+    {
         "year": "2nd Year",
         "semester": "1st Semester",
-        "subjects": ["IT211", "IT212", "IT213", "IT214", "IT215", "EnviSc"]
-    }
-     {
+        "subjects": ["IT211", "IT212", "IT213", "IT214", "IT215", "EnviSci"]
+    },
+    {
         "year": "2nd Year",
         "semester": "2nd Semester",
         "subjects": ["IT221", "IT222", "IT223", "IT224", "Etch", "Rizal", "PATHFit"]
-    }
+    },
     {
         "year": "3rd Year",
         "semester": "1st Semester",
         "subjects": ["IT311", "IT312", "IT313", "IT314", "IT315", "ES211a"]
-    }
+    },
     {
         "year": "3rd Year",
         "semester": "2nd Semester",
